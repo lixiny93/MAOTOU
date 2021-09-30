@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>假装自己是必应</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            /* 滚动条宽度 */
+        }
+		@font-face {
+			font-family:Alibaba;
+			src: url('fonts/AlibabaSans-Regular.eot'),
+			    url('fonts/AlibabaSans-Regular.svg'),
+			    url('fonts/AlibabaSans-Regular.ttf'),
+			    url('fonts/AlibabaSans-Regular.woff');
+			
+		}
+        html {
+            height: 100%;
+        }
+
+        #html {
+            max-width: 100%;
+            /* 最大宽度 */
+            overflow: hidden;
+            font-family: Alibaba, microsoft yahei light, microsoft yahei, sans-serif, 等线;
+            font-size: 22px;
+            font-style: normal;
+            background-image: url("img/AutoDesktop.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50%;
+            cursor: default;
+            /* 鼠标样式：默认 */
+
+            user-select: none;
+            /* 不可选中页面 */
+
+        }
+
+        #time {
+            position: absolute;
+            width: 100px;
+            left: 50%;
+            margin-left: -47.5px;
+            top: 100px;
+            text-align: center;
+            color: #fff;
+            font-size: 36px;
+            font-weight: inherit;
+            text-shadow: 0 0 20px rgba(0, 0, 0, .35);
+			
+        }
+
+        #text_search {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            width: 200px;
+            margin-left: -115px;
+            padding: 13px 15px;
+            border-radius: 30px;
+            outline: none;
+            /* 轮廓线，用于突出编辑框元素给去掉 */
+            border: none;
+            /* 去掉边框 */
+            text-align: center;
+            font-size: small;
+            font-weight: 400;
+            background-color: rgba(255, 255, 255, .25);
+            box-shadow: rgba(0, 0, 0, .2) 0 0 10px;
+            backdrop-filter: blur(10px);
+            /* 模糊10像素 */
+            transition: all .25s;
+            /* 0.25秒拉伸 */
+        }
+
+        #text_search:hover {
+            color: black;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+            margin-left: -200px;
+            width: 385px;
+        }
+
+        #text_search:focus {
+            color: black;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+            margin-left: -200px;
+            width: 385px;
+        }
+    </style>
+    <script>
+        setInterval(function () {
+                var mydate = new Date();
+                var time = mydate.getHours() + ":" + mydate.getMinutes() + ":" + mydate.getSeconds();
+                document.getElementById("time").innerHTML = time;
+            }, 1000);
+        function text_Keydown(event) {
+            var ts = document.getElementById("text_search")
+            var bying = "https://cn.bing.com/search?q="
+            if (event.keyCode == 13) {
+                bying += ts.value;
+                window.location = bying;
+            }
+        }
+
+
+
+    </script>
+
+</head>
+
+<body id="html">
+
+    <h1 id="time"  >时间</h1>
+    <input type="text" id="text_search" size="30" placeholder="Search" autocomplete="off" onkeyup="text_Keydown(event)"  >
+
+
+
+</body>
+
+</html>
